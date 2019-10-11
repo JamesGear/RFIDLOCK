@@ -27,6 +27,7 @@ yarn install --modules-folder ./app/static/node_modules
 ```
 
 ## Configuration
+
 The following environment variables are *optional*:
 
 | Name             | Purpose                                          |

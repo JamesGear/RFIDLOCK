@@ -6,7 +6,7 @@ class base_config(object):
     SITE_NAME = os.environ.get('APP_NAME', 'Flask Bones')
 
     SECRET_KEY = os.environ.get('SECRET_KEY', 'secrets')
-    SERVER_NAME = os.environ.get('SERVER_NAME', 'app.docker:5000')
+    SERVER_NAME = os.environ.get('SERVER_NAME', '10.0.75.1:5000')
 
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'mail')
     MAIL_PORT = os.environ.get('MAIL_PORT', 1025)
@@ -18,7 +18,7 @@ class base_config(object):
     CACHE_HOST = os.environ.get('MEMCACHED_HOST', 'memcached')
     CACHE_PORT = os.environ.get('MEMCACHED_PORT', 11211)
 
-    POSTGRES_HOST = os.environ.get('POSTGRES_HOST', 'localhost')
+    POSTGRES_HOST = os.environ.get('POSTGRES_HOST', 'postgres')
     POSTGRES_PORT = os.environ.get('POSTGRES_PORT', 5432)
     POSTGRES_USER = os.environ.get('POSTGRES_USER', 'postgres')
     POSTGRES_PASS = os.environ.get('POSTGRES_PASS', 'postgres')
