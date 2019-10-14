@@ -1,12 +1,12 @@
 # RFIDLOCK
-Jako závěrečný projekt jsem si vybral zámek na dveře, který bude mít odemykání pomocí RFID karty/klíčenky, s možností napájení pomocí powerbanky.Chtěl bych zkusit práci s power-saving módy na ESP8266. Chip bude komunikovat s MQTT a Mosquitto.
+Jako závěrečný projekt jsem si vybral zámek na dveře, který bude mít odemykání pomocí RFID karty/klíčenky.Chtěl bych zkusit práci s ESP8266. Chip bude komunikovat s MQTT a Mosquitto.
 
 Základní princip : 
 Uživatel přiloží klíčenku k zámku, zámek přečte kód uložený na klíčence, kód se přes WIFI zašle na MQTT server, pokud se k bude shodovat s kódem v databázi, pošle zpátky signál pro otevření dveří, pokud ne, pošle signál pro bzučák, který vydá zvuk jako zamítnutí.
 
 Známe problémy :
-vymyslet kód v Pythonu,
-vytvoření MQTT broker
+využití flask-bones,
+virtual box na kterém měl běžet MQTT server nefunguje zároveň s Dockerem který je potřeba pro flask-bonek
 
 reference :
 https://www.instructables.com/id/TfCD-NFC-Beer-Lockbox/
