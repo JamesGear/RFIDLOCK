@@ -6,7 +6,7 @@ Uživatel přiloží klíčenku k zámku, zámek přečte kód uložený na klí
 
 Známe problémy :
 využití flask-bones,
-virtual box na kterém měl běžet MQTT server nefunguje zároveň s Dockerem který je potřeba pro flask-bonek
+virtual box na kterém měl běžet MQTT server nefunguje zároveň s Dockerem který je potřeba pro flask-bonek (vyřešeno, MQTT spuštěno v dockeru zároveň s projektem)
 
 reference :
 https://www.instructables.com/id/TfCD-NFC-Beer-Lockbox/
