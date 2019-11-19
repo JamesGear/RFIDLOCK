@@ -62,4 +62,28 @@ Instalace Flask Bones
 
     Nainstalujeme Docker pro windows (https://hub.docker.com/editions/community/docker-ce-desktop-windows) 
 
+    Docker musí být nastavený na “Linux constainers” 
+
+    Sdílení disků musí být povoleno 
+
+    Poté stáhneme a nainstalujeme PostrgreSQL (https://www.postgresql.org/download/) 
+
      
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
