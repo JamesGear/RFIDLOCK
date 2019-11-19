@@ -1,30 +1,90 @@
-# RFIDLOCK
-Jako závěrečný projekt jsem si vybral zámek na dveře, který bude mít odemykání pomocí RFID karty/klíčenky, s možností napájení pomocí powerbanky.Chtěl bych zkusit práci s power-saving módy na ESP8266. Chip bude komunikovat s MQTT a Mosquitto.
+RFID zámek 
 
-Základní princip : 
-Uživatel přiloží klíčenku k zámku, zámek přečte kód uložený na klíčence, kód se přes WIFI zašle na MQTT server, pokud se k bude shodovat s kódem v databázi, pošle zpátky signál pro otevření dveří, pokud ne, pošle signál pro bzučák, který vydá zvuk jako zamítnutí.
+Jako závěrečný projekt jsem si vybral systém zámků na dveře s odemykáním pomocí RFID chipu/karty, pro práci jsem si zvolil mikrokontroler ESP8266. Rozhodl jsem po domluvě s p. učitelem Grussmannem pro využití technologií: MQTT; Mosquitto; Flask bones; Docker 
 
-Známe problémy :
-vymyslet kód v Pythonu,
-vytvoření MQTT broker
+ 
 
-reference :
-https://www.instructables.com/id/TfCD-NFC-Beer-Lockbox/
-https://www.makeuseof.com/tag/diy-smart-lock-arduino-rfid/
-https://3dprint.com/53583/nfc-door-lock-qduino-mini/
-https://bbs.espressif.com/viewtopic.php?t=133
-https://github.com/petrgru/karty (školní chipy)
-https://www.root.cz/clanky/protokol-mqtt-komunikacni-standard-pro-iot/
-https://iotta.cz/esp8266-mqtt/
-http://www.steves-internet-guide.com/into-mqtt-python-client/
-https://test.mosquitto.org/
-            
-potřebné díly : 
-https://www.umakov.cz/elektricky-zamek-250x28mm-12v/d-69501-c-2662/
-RFID čtečka ✓
-ESP8266 ✓
-nepájivé pole ✓
-kabely ✓
-bzučák ✓
-RFID chipy a karty ✓
+Základní princip: 
+
+Uživatel přiloží RFID kartu ke čtečce u dveří, po přiložení se ESP probudí a odešle přes wifi požadavek na server ve kterém se ověří jestli je uživatel registrovaný, patří do skupiny firmy a má-li časový přístup, pokud vše ověří a výsledek je kladný, pošle se zpátky signál, který otevře dveře. 
+
+ 
+
+Reference: 
+
+https://www.instructables.com/id/TfCD-NFC-Beer-Lockbox/ zámek dveří na NFC 
+
+https://www.makeuseof.com/tag/diy-smart-lock-arduino-rfid/ zámek dveří na RFID 
+
+https://3dprint.com/53583/nfc-door-lock-qduino-mini/ zámek dveří při využití arduina 
+
+https://bbs.espressif.com/viewtopic.php?t=133 https://github.com/petrgru/karty RFID chipy fungující na škole 
+
+https://www.root.cz/clanky/protokol-mqtt-komunikacni-standard-pro-iot/ základní zprovoznění MQTT protokolu 
+
+https://iotta.cz/esp8266-mqtt/ propojení ESP a MQTT 
+
+http://www.steves-internet-guide.com/into-mqtt-python-client/ nastavení MQTT pro python 
+
+https://test.mosquitto.org/ veřejný Mosquitto server 
+
+ 
+
+Potřebné díly: 
+
+Elektrický zámek dveří 
+
+RFID čtečka 
+
+ESP8266 
+
+Pole na pájení 
+
+Kabely 
+
+Bzučák 
+
+RFID chip/karta 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Instalace Flask Bones 
+
+    Nainstalujeme Docker pro windows (https://hub.docker.com/editions/community/docker-ce-desktop-windows) 
+
+    Docker musí být nastavený na “Linux constainers” 
+
+    Sdílení disků musí být povoleno 
+    ![Docker Shared Files](https://github.com/JamesGear/RFIDLOCK/blob/master/DockerSharedDrives.PNG)
+
+    Poté stáhneme a nainstalujeme PostrgreSQL (https://www.postgresql.org/download/) 
+
+     
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
  
