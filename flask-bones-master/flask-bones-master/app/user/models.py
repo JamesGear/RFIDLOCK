@@ -1,28 +1,22 @@
 import datetime
-
 from flask_login import UserMixin
-
-from app.database import db, CRUDMixin
 from app.extensions import bcrypt
-
+from ..database import db, CRUDMixin
+from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.orm import relationship
+from sqlalchemy.schema import Column, ForeignKey
+from sqlalchemy.types import Boolean, Integer, String, DateTime
 
 class User(CRUDMixin, UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
-    email = db.Column(db.String(128), nullable=False, unique=True)
-    pw_hash = db.Column(db.String(60), nullable=False)
-    created_ts = db.Column(
-        db.DateTime(timezone=True),
-        default=datetime.datetime.utcnow
-    )
-    updated_ts = db.Column(
-        db.DateTime(timezone=True),
-        default=datetime.datetime.utcnow
-    )
-    remote_addr = db.Column(db.String(20))
-    active = db.Column(db.Boolean())
-    is_admin = db.Column(db.Boolean())
-
+    __tablename__ = 'User'
+    id = Column(Integer, primary_key=True)
+    username = Column(String(20), nullable=False, unique=True)
+    email = Column(String(128), nullable=False, unique=True)
+    pw_hash = Column(String(60), nullable=False)
+    remote_addr = Column(String(20))
+    active = Column(Boolean())
+    is_admin = Column(Boolean())
+    parent_id_pomocna = Column(Integer, ForeignKey('PomocnaUserToGroup.id'))
     def __init__(self, password, **kwargs):
         super(User, self).__init__(**kwargs)
         self.set_password(password)
@@ -36,3 +30,40 @@ class User(CRUDMixin, UserMixin, db.Model):
 
     def check_password(self, password):
         return bcrypt.check_password_hash(self.pw_hash, password)
+
+class Firma(CRUDMixin, db.Model):
+    __tablename__ = 'Firma'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(20), nullable=False, unique=True)
+    ICO = Column(String(128), nullable=False, unique=True)
+    created_ts = Column(
+        DateTime(timezone=True),
+        default=datetime.datetime.utcnow
+    )
+    updated_ts = Column(
+        DateTime(timezone=True),
+        default=datetime.datetime.utcnow
+    )
+    parent_id_group = Column(Integer, ForeignKey('Group.id'))
+
+class PomocnaUserToGroup(CRUDMixin , db.Model):
+    __tablename__ = 'PomocnaUserToGroup'
+    id = Column(Integer, primary_key=True)
+    children_user = relationship("User")
+    children_group = relationship("Group")
+
+class Group(CRUDMixin, db.Model):
+    __tablename__ = 'Group'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(20), nullable=False, unique=True)
+    created_ts = Column(
+        DateTime(timezone=True),
+        default=datetime.datetime.utcnow
+    )
+    updated_ts = Column(
+        DateTime(timezone=True),
+        default=datetime.datetime.utcnow
+    )
+
+    parent_id_pomocna = Column(Integer, ForeignKey('PomocnaUserToGroup.id'))
+    children_firma = relationship("Firma")

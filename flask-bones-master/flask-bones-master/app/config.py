@@ -18,11 +18,11 @@ class base_config(object):
     CACHE_HOST = os.environ.get('MEMCACHED_HOST', 'memcached')
     CACHE_PORT = os.environ.get('MEMCACHED_PORT', 11211)
 
-    POSTGRES_HOST = os.environ.get('POSTGRES_HOST', 'postgres')
+    POSTGRES_HOST = os.environ.get('POSTGRES_HOST', 'localhost')
     POSTGRES_PORT = os.environ.get('POSTGRES_PORT', 5432)
     POSTGRES_USER = os.environ.get('POSTGRES_USER', 'postgres')
     POSTGRES_PASS = os.environ.get('POSTGRES_PASS', 'postgres')
-    POSTGRES_DB = os.environ.get('POSTGRES_DB', 'postgres')
+    POSTGRES_DB = os.environ.get('POSTGRES_DB', 'bones')
 
     SQLALCHEMY_DATABASE_URI = 'postgresql://%s:%s@%s:%s/%s' % (
         POSTGRES_USER,
