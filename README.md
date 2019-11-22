@@ -65,7 +65,7 @@ Instalace Flask Bones
     Docker musí být nastavený na “Linux constainers” 
 
     Sdílení disků musí být povoleno 
-    ![Docker Shared Files](https://github.com/JamesGear/RFIDLOCK/blob/master/DockerSharedDrives.PNG)
+    ![Docker Shared Files](DockerSharedDrives.PNG)
 
     Poté stáhneme a nainstalujeme PostrgreSQL (https://www.postgresql.org/download/) 
 
