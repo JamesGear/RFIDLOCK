@@ -1,17 +1,8 @@
-RFID zámek 
-
-Jako závěrečný projekt jsem si vybral systém zámků na dveře s odemykáním pomocí RFID chipu/karty, pro práci jsem si zvolil mikrokontroler ESP8266. Rozhodl jsem po domluvě s p. učitelem Grussmannem pro využití technologií: MQTT; Mosquitto; Flask bones; Docker 
-
- 
-
-Základní princip: 
-
+# RFID zámek 
+Jako závěrečný projekt jsem si vybral systém zámků na dveře s odemykáním pomocí RFID chipu/karty, pro práci jsem si zvolil mikrokontroler ESP8266. Rozhodl jsem po domluvě s p. učitelem Grussmannem pro využití technologií: MQTT; Mosquitto; Flask bones; Docker; Yarn 
+## Základní princip: 
 Uživatel přiloží RFID kartu ke čtečce u dveří, po přiložení se ESP probudí a odešle přes wifi požadavek na server ve kterém se ověří jestli je uživatel registrovaný, patří do skupiny firmy a má-li časový přístup, pokud vše ověří a výsledek je kladný, pošle se zpátky signál, který otevře dveře. 
-
- 
-
-Reference: 
-
+## Reference: 
 https://www.instructables.com/id/TfCD-NFC-Beer-Lockbox/ zámek dveří na NFC 
 
 https://www.makeuseof.com/tag/diy-smart-lock-arduino-rfid/ zámek dveří na RFID 
@@ -27,11 +18,7 @@ https://iotta.cz/esp8266-mqtt/ propojení ESP a MQTT
 http://www.steves-internet-guide.com/into-mqtt-python-client/ nastavení MQTT pro python 
 
 https://test.mosquitto.org/ veřejný Mosquitto server 
-
- 
-
-Potřebné díly: 
-
+## Potřebné díly: 
 Elektrický zámek dveří 
 
 RFID čtečka 
@@ -45,45 +32,31 @@ Kabely
 Bzučák 
 
 RFID chip/karta 
+## Instalace Flask Bones 
 
- 
+   1. Nainstalujeme Docker pro windows (https://hub.docker.com/editions/community/docker-ce-desktop-windows) 
 
- 
+   2. Docker musí být nastavený na “Linux constainers” 
 
- 
+   3. Sdílení disků musí být povoleno 
 
- 
+   4. Poté stáhneme a nainstalujeme PostrgreSQL (https://www.postgresql.org/download/) 
 
- 
+   5. PostgreSQL si automaticky nastaví server na adresu localhost:5432 
 
- 
+   6. Dále si stáhneme a nainstalujeme vývojové prostředí Pycharm (pozn. Pycharm musí být v professional verzi, kvůli nastave propojení s Dockerem, Community verze tuto možnost bohužel nenabízí) 
 
-Instalace Flask Bones 
+   7. V pycharmu si otevřeme flask bones (originální autor : https://github.com/cburmeister/flask-bones) 
 
-    Nainstalujeme Docker pro windows (https://hub.docker.com/editions/community/docker-ce-desktop-windows) 
+   8. V projektu si jako Interpreter nastavíme docker 
 
-    Docker musí být nastavený na “Linux constainers” 
+   9. Poté použijeme příkaz : 
 
-    Sdílení disků musí být povoleno 
-
-    Poté stáhneme a nainstalujeme PostrgreSQL (https://www.postgresql.org/download/) 
-
-     
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
+```bash
+docker-compose up -d
+```
+   10. Dále nainstalujeme Yarn :
+   
+```bash
+yarn install --modules-folder ./app/static/node_modules 
+```
