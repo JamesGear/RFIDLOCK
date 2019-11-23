@@ -31,20 +31,11 @@ class Firma(CRUDMixin, db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(String(20), nullable=False, unique=True)
     ICO = Column(String(128), nullable=False, unique=True)
-    created_ts = Column(
-        DateTime(timezone=True),
-        default=datetime.datetime.utcnow
-    )
-    updated_ts = Column(
-        DateTime(timezone=True),
-        default=datetime.datetime.utcnow
-    )
     User_child_firma = relationship("User")
 class Skupina(CRUDMixin, db.Model):
     __tablename__ = 'Skupina'
     id = Column(Integer, primary_key=True)
     id_user = Column(Integer)
-    id_typ = Column(Integer)
     User_child_skupina = relationship("User")
     typ_id = Column(Integer, ForeignKey('Prava.id'))
 
