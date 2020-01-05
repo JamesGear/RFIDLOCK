@@ -1,6 +1,4 @@
 import os
-
-
 class base_config(object):
     """Default configuration options."""
     SITE_NAME = os.environ.get('APP_NAME', 'Flask Bones')

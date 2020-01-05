@@ -8,6 +8,10 @@
 {% endblock %}
 
 {% block body %}
+<br>
+<a href={{ url_for('auth.profile') }}>View Profile JSON(Login Required)</a>
+<br>
+<a href={{ url_for('auth.logout') }}>Logout</a>
 {% endblock %}
 
 {% block footer %}
